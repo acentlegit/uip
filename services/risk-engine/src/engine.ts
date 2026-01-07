@@ -1,5 +1,5 @@
 
-import { Intent } from "../../../packages/core/intent";
+import { Intent } from "@uip/core";
 
 export function assessRisk(intent: Intent) {
   let score = 0;

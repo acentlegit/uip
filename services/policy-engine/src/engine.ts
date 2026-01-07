@@ -1,5 +1,5 @@
 
-import { Intent } from "../../../packages/core/intent";
+import { Intent } from "@uip/core";
 
 export function authorize(intent: Intent, roles: string[]) {
   if (roles.includes("ADMIN")) return { authorized: true };

@@ -1,5 +1,5 @@
 
-import { Intent } from "../../../packages/core/intent";
+import { Intent } from "@uip/core";
 
 export function simulate(intent: Intent, scenarios: any[]) {
   return scenarios.map(s => ({

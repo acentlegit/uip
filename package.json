@@ -1,0 +1,21 @@
+{
+  "name": "uip-platform",
+  "private": true,
+  "version": "1.0.0",
+  "workspaces": [
+    "services/*-engine"
+  ],
+  "scripts": {
+    "build": "npm run build --workspaces",
+    "start:intent": "npm --workspace services/intent-engine run start",
+    "start:compliance": "npm --workspace services/compliance-engine run start",
+    "start:policy": "npm --workspace services/policy-engine run start",
+    "start:risk": "npm --workspace services/risk-engine run start",
+    "start:evidence": "npm --workspace services/evidence-engine run start"
+  },
+  "devDependencies": {
+    "@types/node": "^25.0.3",
+    "tsx": "^4.16.2",
+    "typescript": "^5.5.4"
+  }
+}

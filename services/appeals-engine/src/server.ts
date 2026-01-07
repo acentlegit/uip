@@ -8,7 +8,7 @@ export function createServer(openapiPath: string) {
 
   app.register(swagger, {
     mode: "static",
-    specification: { path: openapiPath }
+    specification: { path: openapiPath, baseDir: __dirname }
   });
 
   app.register(swaggerUI, { routePrefix: "/docs" });

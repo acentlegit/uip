@@ -1,5 +1,5 @@
 
-import { Intent } from "../../../packages/core/intent";
+import { Intent } from "@uip/core";
 
 export function evaluateCompliance(intent: Intent) {
   if (intent.industry === "REAL_ESTATE" && intent.payload?.zoning === "ILLEGAL") {

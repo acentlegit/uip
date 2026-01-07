@@ -1,12 +1,18 @@
-
 import Fastify from "fastify";
-const app = Fastify();
+import swagger from "@fastify/swagger";
+import swaggerUI from "@fastify/swagger-ui";
+import routes from "./routes";
 
-app.post("/execute", async (req, reply) => {
-  reply.send({
-    engine: "explainability",
-    outcome: "PASS"
+export function createServer(openapiPath: string) {
+  const app = Fastify({ logger: true });
+
+  app.register(swagger, {
+    mode: "static",
+    specification: { path: openapiPath, baseDir: __dirname }
   });
-});
 
-app.listen({ port: 3000 });
+  app.register(swaggerUI, { routePrefix: "/docs" });
+  app.register(routes);
+
+  return app;
+}
