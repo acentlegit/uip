@@ -1,0 +1,45 @@
+# =====================
+# OS / Editor
+# =====================
+.DS_Store
+
+# =====================
+# Node
+# =====================
+node_modules/
+package-lock.json
+
+# =====================
+# Build output
+# =====================
+dist/
+services/*-engine/dist/
+
+# =====================
+# Runtime / Local
+# =====================
+.swagger-index-runtime/
+.uip-engine-runtime/
+
+# =====================
+# Generated / Temp
+# =====================
+*.zip
+*.log
+
+# =====================
+# Scripts (deny by default)
+# =====================
+*.sh
+!scripts/uip-engines-dev.sh
+
+# =====================
+# Tools (one-time generators)
+# =====================
+tools/generate-engine.*
+
+# =====================
+# Admin UI (separate repo)
+# =====================
+uip-admin/
+
