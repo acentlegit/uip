@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ENGINE}}-engine
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: {{ENGINE}}-engine
+  template:
+    metadata:
+      labels:
+        app: {{ENGINE}}-engine
+    spec:
+      containers:
+        - name: {{ENGINE}}-engine
+          image: acentlegit/uip-{{ENGINE}}:v1
+          ports:
+            - containerPort: 7000
+          env:
+            - name: DATABASE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: uip-db
+                  key: url

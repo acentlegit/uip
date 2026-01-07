@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ENGINE}}-engine
+spec:
+  selector:
+    app: {{ENGINE}}-engine
+  ports:
+    - port: 7000
+      targetPort: 7000
