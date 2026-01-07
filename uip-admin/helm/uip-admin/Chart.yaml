@@ -1,0 +1,4 @@
+
+apiVersion: v2
+name: uip-admin
+version: 0.1.0

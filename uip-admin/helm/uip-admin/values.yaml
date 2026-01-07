@@ -1,0 +1,6 @@
+
+image:
+  repository: uip-admin
+  tag: latest
+service:
+  port: 7000
