@@ -48,3 +48,13 @@ packages/**/tsconfig.tsbuildinfo
 # Generated / local engine implementations (not committed)
 services/
 tools/
+
+
+node_modules/
+dist/
+.uip-engine-runtime/
+.swagger-index-runtime/
+*.log
+*.zip
+.DS_Store
+
