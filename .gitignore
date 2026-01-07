@@ -44,3 +44,7 @@ tools/generate-engine.*
 uip-admin/
 
 packages/**/tsconfig.tsbuildinfo
+
+# Generated / local engine implementations (not committed)
+services/
+tools/
