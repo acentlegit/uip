@@ -3,7 +3,9 @@
   "private": true,
   "version": "1.0.0",
   "workspaces": [
-    "services/*-engine"
+    "services/*-engine",
+    "packages/*",
+    "services/*"
   ],
   "scripts": {
     "build": "npm run build --workspaces",
