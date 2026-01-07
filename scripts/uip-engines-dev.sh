@@ -2,7 +2,7 @@
 set -euo pipefail
 
 echo "========================================="
-echo "🚀 UIP — Dev / Demo Engine Runner (18)"
+echo "🚀 UIP — Build & Run All 18 Engines (DEV)"
 echo "========================================="
 
 ROOT_DIR="$(cd "$(dirname "$0")/.." && pwd)"
@@ -11,8 +11,24 @@ RUNTIME_DIR="$ROOT_DIR/.uip-engine-runtime"
 BASE_PORT=7001
 
 ENGINES=(
-  intent compliance policy risk explainability routing integration evidence
-  identity tenancy quota pricing versioning change ai simulation appeals learning
+  intent
+  compliance
+  policy
+  risk
+  explainability
+  routing
+  integration
+  evidence
+  identity
+  tenancy
+  quota
+  pricing
+  versioning
+  change
+  ai
+  simulation
+  appeals
+  learning
 )
 
 # --------------------------------------------------
@@ -21,7 +37,7 @@ ENGINES=(
 echo "🔎 Verifying OpenAPI specs..."
 
 for engine in "${ENGINES[@]}"; do
-  if [[ ! -f "$OPENAPI_DIR/$engine.yaml" && ! -f "$OPENAPI_DIR/$engine.openapi.yaml" ]]; then
+  if [[ ! -f "$OPENAPI_DIR/${engine}.yaml" && ! -f "$OPENAPI_DIR/${engine}.openapi.yaml" ]]; then
     echo "❌ Missing OpenAPI spec for engine: $engine"
     exit 1
   fi
@@ -30,14 +46,14 @@ done
 echo "✅ All OpenAPI specs present"
 
 # --------------------------------------------------
-# 2. Clean runtime (ephemeral, never committed)
+# 2. Prepare ephemeral runtime (never committed)
 # --------------------------------------------------
 echo "🧹 Preparing ephemeral runtime..."
 rm -rf "$RUNTIME_DIR"
 mkdir -p "$RUNTIME_DIR"
 
 # --------------------------------------------------
-# 3. Write runtime (self-contained)
+# 3. Runtime package.json
 # --------------------------------------------------
 cat > "$RUNTIME_DIR/package.json" <<'EOF'
 {
@@ -52,6 +68,9 @@ cat > "$RUNTIME_DIR/package.json" <<'EOF'
 }
 EOF
 
+# --------------------------------------------------
+# 4. Runtime engine launcher (Swagger-correct)
+# --------------------------------------------------
 cat > "$RUNTIME_DIR/engine.js" <<'EOF'
 const Fastify = require("fastify");
 const swagger = require("@fastify/swagger");
@@ -69,7 +88,7 @@ const specPath = [
 ].find(p => fs.existsSync(p));
 
 if (!specPath) {
-  console.error(`OpenAPI spec not found for ${engine}`);
+  console.error(`❌ OpenAPI spec not found for ${engine}`);
   process.exit(1);
 }
 
@@ -77,11 +96,18 @@ const app = Fastify({ logger: false });
 
 app.register(swagger, {
   mode: "static",
-  specification: { path: specPath }
+  specification: {
+    path: specPath,
+    baseDir: openapiDir
+  }
 });
 
 app.register(swaggerUI, {
-  routePrefix: `/${engine}/v1/docs`
+  routePrefix: `/${engine}/v1/docs`,
+  uiConfig: {
+    docExpansion: "list",
+    deepLinking: true
+  }
 });
 
 app.get(`/${engine}/v1/health`, async () => ({
@@ -99,7 +125,7 @@ app.listen({ port, host: "0.0.0.0" }, err => {
 EOF
 
 # --------------------------------------------------
-# 4. Install deps
+# 5. Install runtime deps
 # --------------------------------------------------
 echo "⬇️ Installing runtime dependencies..."
 cd "$RUNTIME_DIR"
@@ -107,7 +133,7 @@ npm install --silent
 cd "$ROOT_DIR"
 
 # --------------------------------------------------
-# 5. Start all engines
+# 6. Start all engines
 # --------------------------------------------------
 echo "🚀 Starting all 18 engines..."
 
@@ -121,7 +147,15 @@ done
 echo ""
 echo "========================================="
 echo "✅ All 18 engines running"
-echo "Swagger Index: http://localhost:7099"
+echo ""
+echo "Swagger UIs:"
+i=0
+for engine in "${ENGINES[@]}"; do
+  port=$((BASE_PORT + i))
+  i=$((i + 1))
+  echo "  http://localhost:${port}/${engine}/v1/docs"
+done
+echo ""
 echo "Press Ctrl+C to stop"
 echo "========================================="
 
