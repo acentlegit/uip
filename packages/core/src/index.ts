@@ -5,10 +5,12 @@ export interface IntentPayload {
   controlled?: boolean;
 }
 
+
+
 export interface Intent {
-  id?: string;
-  industry: string;
-  action?: string;
-  payload?: IntentPayload;
-  metadata?: Record<string, unknown>;
+  id: string;
+  type?: "EXECUTE" | "EVALUATE" | "SIMULATE";
+  industry?: string;
+  payload?: Record<string, any>;
+  metadata?: Record<string, any>;
 }
