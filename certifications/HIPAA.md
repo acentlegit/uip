@@ -1,0 +1,3 @@
+- Administrative Safeguards
+- Physical Safeguards
+- Technical Safeguards

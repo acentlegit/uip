@@ -1,0 +1,21 @@
+
+{
+  "title": "UIP Governance Overview",
+  "panels": [
+    {
+      "type": "stat",
+      "title": "Intents Processed",
+      "targets": [{ "expr": "sum(uip_intents_total)" }]
+    },
+    {
+      "type": "graph",
+      "title": "Engine Latency",
+      "targets": [{ "expr": "histogram_quantile(0.95, uip_engine_latency_bucket)" }]
+    },
+    {
+      "type": "graph",
+      "title": "Denial Rate",
+      "targets": [{ "expr": "rate(uip_intent_denied_total[5m])" }]
+    }
+  ]
+}

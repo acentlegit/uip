@@ -1,0 +1,12 @@
+
+{
+  "industry": "finance",
+  "description": "AML, KYC, transaction thresholds",
+  "rules": [
+    {
+      "id": "finance-rule-001",
+      "type": "HARD_STOP",
+      "description": "Sample regulatory constraint"
+    }
+  ]
+}

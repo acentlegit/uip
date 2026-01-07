@@ -1,0 +1,6 @@
+{
+  "intent": "BUY_PROPERTY",
+  "property": "123 Main St",
+  "zoning": "R2",
+  "status": "DENIED"
+}

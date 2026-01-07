@@ -1,0 +1,11 @@
+
+UIP – Universal Intent Platform
+
+This product includes software developed by the open-source community.
+Key components:
+- Node.js
+- Fastify
+- PostgreSQL
+- MongoDB
+- Prometheus
+- Grafana

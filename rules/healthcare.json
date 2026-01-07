@@ -1,0 +1,12 @@
+
+{
+  "industry": "healthcare",
+  "description": "HIPAA, medical necessity, coverage rules",
+  "rules": [
+    {
+      "id": "healthcare-rule-001",
+      "type": "HARD_STOP",
+      "description": "Sample regulatory constraint"
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+
+profile: federal
+description: Multi-region, high availability, federal oversight
+requirements:
+  - mTLS required
+  - Audit logging enabled
+  - Evidence retention: 10 years

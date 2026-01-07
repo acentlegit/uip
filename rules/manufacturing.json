@@ -1,0 +1,12 @@
+
+{
+  "industry": "manufacturing",
+  "description": "Safety, compliance, export controls",
+  "rules": [
+    {
+      "id": "manufacturing-rule-001",
+      "type": "HARD_STOP",
+      "description": "Sample regulatory constraint"
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+{
+  "intent": "AUTHORIZE_TRANSFER",
+  "amount": 250000,
+  "status": "DENIED"
+}

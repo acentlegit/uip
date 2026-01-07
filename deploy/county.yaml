@@ -1,0 +1,7 @@
+
+profile: county
+description: Minimal cluster, recorder / clerk access, local jurisdiction rules
+requirements:
+  - mTLS required
+  - Audit logging enabled
+  - Evidence retention: 10 years

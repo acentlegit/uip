@@ -1,0 +1,12 @@
+
+{
+  "industry": "communications",
+  "description": "FCC, privacy, lawful intercept",
+  "rules": [
+    {
+      "id": "communications-rule-001",
+      "type": "HARD_STOP",
+      "description": "Sample regulatory constraint"
+    }
+  ]
+}

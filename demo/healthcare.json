@@ -1,0 +1,5 @@
+{
+  "intent": "AUTHORIZE_TREATMENT",
+  "diagnosis": "Diabetes Type II",
+  "status": "APPROVED"
+}

@@ -1,0 +1,12 @@
+
+{
+  "industry": "education",
+  "description": "FERPA, accreditation, consent",
+  "rules": [
+    {
+      "id": "education-rule-001",
+      "type": "HARD_STOP",
+      "description": "Sample regulatory constraint"
+    }
+  ]
+}

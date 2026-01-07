@@ -1,0 +1,12 @@
+
+{
+  "industry": "real-estate",
+  "description": "Zoning, title, recording, lender approval rules",
+  "rules": [
+    {
+      "id": "real-estate-rule-001",
+      "type": "HARD_STOP",
+      "description": "Sample regulatory constraint"
+    }
+  ]
+}
